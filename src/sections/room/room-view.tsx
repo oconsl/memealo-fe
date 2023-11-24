@@ -1,6 +1,6 @@
 export default function RoomView() {
     return (
-        <div className="flex w-full h-screen bg-[#2B2C48] m-0 p-0">
+        <div className="flex w-screen h-screen bg-[#2B2C48] m-0 p-0">
             <div className='flex-none w-6/12 h-[120px] absolute top-4 left-[300px] border-solid border-2 border-gray-500' />
             <div className='flex-none w-6/12 h-[180px] absolute top-[160px] left-[300px] border-solid border-2 border-gray-500' />
             <div className='flex-none w-6/12 h-[270px] absolute bottom-4 left-[300px] border-solid border-2 border-gray-500' />
