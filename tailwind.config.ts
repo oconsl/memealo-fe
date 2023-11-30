@@ -5,12 +5,12 @@ const config: Config = {
     './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/lib/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
       colors: {
-        'martinique': {
+        martinique: {
           '50': '#f3f5fb',
           '100': '#e5e8f4',
           '200': '#d1d8ec',
@@ -21,7 +21,7 @@ const config: Config = {
           '700': '#5157a4',
           '800': '#464887',
           '900': '#3c3f6c',
-          '950': '#2b2c48',
+          '950': '#2b2c48'
         },
         'brown-pod': {
           '50': '#fdf9ed',
@@ -34,7 +34,7 @@ const config: Config = {
           '700': '#a34e1a',
           '800': '#853d1b',
           '900': '#6d341a',
-          '950': '#401a0a',
+          '950': '#401a0a'
         },
         'coral-red': {
           '50': '#fff1f1',
@@ -47,9 +47,9 @@ const config: Config = {
           '700': '#c11418',
           '800': '#a01417',
           '900': '#84181a',
-          '950': '#480708',
+          '950': '#480708'
         },
-        'astral': {
+        astral: {
           '50': '#f1f7fa',
           '100': '#dceaf1',
           '200': '#bdd7e4',
@@ -60,11 +60,22 @@ const config: Config = {
           '700': '#32526c',
           '800': '#30465a',
           '900': '#2b3c4e',
-          '950': '#192633',
+          '950': '#192633'
         }
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        '.text-stroke': {
+          '-webkit-text-stroke': '2px #FF7E81',
+          'text-shadow': '0px 4px 0px #93C5FD'
+        }
+      }
+
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    }
+  ]
 }
 export default config
