@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
-import { object, string, number, date, InferType } from "yup";
+import { object, string } from "yup";
 
 import loginImage from "@/assets/images/login.webp";
 import Image from "next/image";
