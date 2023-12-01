@@ -2,9 +2,12 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string } from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Image from "next/image";
+import Loading from "@/components/loading";
 
 import loginImage from "@/assets/images/login.webp";
-import Image from "next/image";
 
 type Inputs = {
   username: String;
@@ -23,7 +26,15 @@ let loginSchema = object({
 });
 
 export default function Page() {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const methods = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = methods;
 
   const [error, setError] = useState<any>(false);
 
@@ -36,6 +47,8 @@ export default function Page() {
     }
   };
 
+  console.log({ errors });
+
   return (
     <main className="w-full bg-martinique-950 h-screen flex items-center justify-center">
       <section className="w-2/5 h-5/6 max-w-md py-10 bg-astral-900 relative flex flex-col items-center justify-center rounded-3xl shadow-xl border-[3px] border-astral-950">
@@ -46,32 +59,41 @@ export default function Page() {
           className="flex w-full h-4/6 my-3 flex-col text-xl items-center justify-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <label className="flex flex-col w-4/6 z-20 text-stroke">
+          <label className="flex flex-col w-5/6 relative z-20 text-stroke">
             <span>Nombre De Usuario:</span>
             <input
-              className="my-3 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"
+              className="my-3 mb-0 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"
               {...register("username", { required: true })}
             />
+            {errors.username ? (
+              <span className="text-brown-pod-300 text-sm">
+                {errors.username.message}
+              </span>
+            ) : (
+              ""
+            )}
           </label>
-          <label className="flex flex-col w-4/6 z-20 text-stroke">
+          <label className="flex my-3 flex-col w-5/6 z-20 text-stroke">
             Contraseña:
             <input
-              className="my-3 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"
+              className="my-3 mb-0 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"
               type="password"
               {...register("password", { required: true })}
             />
+            {errors.password ? (
+              <span className="text-brown-pod-300 text-sm">
+                {errors.password.message}
+              </span>
+            ) : (
+              ""
+            )}
           </label>
           <button
             type="submit"
             className="cursor-pointer active:title-shadow-none transition-none my-3 text-4xl text-brown-pod-300 stroke-btn title-shadow z-20"
           >
-            Iniciar Sesion
+            {isSubmitting ? <Loading /> : "Iniciar Sesión"}
           </button>
-          {error && (
-            <div className="w-4/6 h-14 py-1 rounded-full flex items-center justify-center bg-coral-red-400 z-20">
-              <p className="text-brown-pod-300 text-lg">{error.message}</p>
-            </div>
-          )}
         </form>
         <Image
           src={loginImage}
