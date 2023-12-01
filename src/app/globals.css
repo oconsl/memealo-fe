@@ -1,3 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .stroke {
+    -webkit-text-stroke: 2px theme("colors.coral-red.400");
+    text-stroke: 2px theme("colors.coral-red.400");
+  }
+
+  .stroke-btn {
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
+    text-stroke: 1px theme("colors.coral-red.400");
+  }
+
+  .stroke-button {
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
+    text-stroke: 1px theme("colors.coral-red.400");
+  }
+
+  .title-shadow {
+    text-shadow: 0 3px 0 theme("colors.astral.400");
+  }
+
+  .title-shadow-none {
+    text-shadow: none;
+  }
+
+  .text-stroke {
+    text-shadow: none;
+  }
+
+  .text-stroke:focus-within {
+    text-shadow:
+      -2px -2px 0 theme("colors.astral.950"),
+      0 -2px 0 theme("colors.astral.950"),
+      2px -2px 0 theme("colors.astral.950"),
+      2px 0 0 theme("colors.astral.950"),
+      2px 2px 0 theme("colors.astral.950"),
+      0 2px 0 theme("colors.astral.950"),
+      -2px 2px 0 theme("colors.astral.950"),
+      -2px 0 0 theme("colors.astral.950");
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
