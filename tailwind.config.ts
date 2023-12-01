@@ -2,10 +2,10 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -44,13 +44,14 @@ const config: Config = {
           "100": "#ffe1e2",
           "200": "#ffc7c8",
           "300": "#ffa0a2",
-          "400": "#ff7e81",
+          "400": "#ff6a6d",
           "500": "#f83b3f",
           "600": "#e61c20",
           "700": "#c11418",
           "800": "#a01417",
           "900": "#84181a",
           "950": "#480708",
+          "special": "#ff7e81",
         },
         astral: {
           "50": "#f1f7fa",
