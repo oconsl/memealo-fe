@@ -39,6 +39,10 @@
     text-shadow: 0 3px 0 theme("colors.astral.400");
   }
 
+  .text-shadow {
+    text-shadow: 1px 3px 2px theme("colors.astral.400");
+  }
+
   .title-shadow-none {
     text-shadow: none;
   }
