@@ -1,5 +1,5 @@
 import type { StateCreator } from 'zustand'
-import type { ConfigSlice } from './config-slice'
+import type { GameConfigSlice } from './game-config-slice'
 import axios from 'axios'
 
 type State = {
@@ -8,8 +8,10 @@ type State = {
 }
 
 export interface UserSlice {
-  isLogged: boolean
-  username: string,
+  user: {
+    isLogged: boolean
+    username: string,
+  }
   signIn: (username: string, password: string) => void,
   resetUser: () => void
 }
@@ -20,18 +22,23 @@ const initialState: State = {
 }
 
 export const createUserSlice: StateCreator<
-  ConfigSlice & UserSlice,
+  GameConfigSlice & UserSlice,
   [['zustand/devtools', never]],
   [],
   UserSlice
 > = (set) => ({
-  ...initialState,
+  user: initialState,
   signIn: async (username: string, password: string) => {
     const response = await axios.post('/api/auth/sign-in', { username, password })
-    set({ isLogged: true, username: response?.data?.response?.username }, false, 'user/signIn')
+    set({
+      user:{
+        isLogged: true,
+        username: response?.data?.response?.username
+      }
+    }, false, 'user/signIn')
   },
   resetUser: () => {
     console.log('reset de user')
-    set(initialState, false, 'user/reset')
+    set({ user: initialState }, false, 'user/reset')
   },
 })

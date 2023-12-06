@@ -1,18 +1,19 @@
 import type { StateCreator } from 'zustand'
-import type { ConfigSlice, UserSlice } from '@/libs/store/slices'
+import type { GameConfigSlice, UserSlice, ConfigSlice } from '@/libs/store/slices'
 
 export interface SharedSlice {
   resetAll: () => void
 }
 
 export const createSharedSlice: StateCreator<
-  ConfigSlice & UserSlice,
+  GameConfigSlice & UserSlice & ConfigSlice,
   [['zustand/devtools', never]],
   [],
   SharedSlice
 > = (_set, get) => ({
   resetAll: () => {
     get().resetUser()
+    get().resetGameConfig()
     get().resetConfig()
   },
 })

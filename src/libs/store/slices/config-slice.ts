@@ -1,54 +1,51 @@
-import type { Cosmetic, Achievement } from '@/types/user'
-import type { MemeCard, TwistCard, Situation } from '@/types/card'
 import type { StateCreator } from 'zustand'
-import type { UserSlice } from './user-slice'
 import axios from 'axios'
 
 type State = {
-  memeCards: MemeCard[],
-  twistCards: TwistCard[],
-  situations: Situation[],
-  achievements: Achievement[],
-  cosmetics: Cosmetic[]
+  avatar: string
+  frame: string
+  foil: string
+  background: string
 }
 
 export interface ConfigSlice {
-  memeCards: MemeCard[],
-  twistCards: TwistCard[],
-  situations: Situation[],
-  achievements: Achievement[],
-  cosmetics: Cosmetic[],
-  getGeneralConfig: () => void,
+  config: {
+    avatar: string
+    frame: string
+    foil: string
+    background: string
+  }
+  getUserConfig: (userId: number) => void,
   resetConfig: () => void
 }
 
 const initialState: State = {
-  memeCards: [],
-  twistCards: [],
-  situations: [],
-  achievements: [],
-  cosmetics: [],
+  avatar: '',
+  frame: '',
+  foil: '',
+  background: ''
 }
 
 export const createConfigSlice: StateCreator<
-  ConfigSlice & UserSlice,
+  ConfigSlice,
   [['zustand/devtools', never]],
   [],
   ConfigSlice
 > = (set) => ({
-  ...initialState,
-  getGeneralConfig: async () => {
-    const response = await axios.get('/api/config')
+  config: initialState,
+  getUserConfig: async (userId: number) => {
+    const response = await axios.get(`/api/user/${userId}`)
     set({
-      memeCards: response?.data?.response?.memeCards,
-      twistCards: response?.data?.response?.twistCards,
-      situations: response?.data?.response?.situations,
-      achievements: response?.data?.response?.achievements,
-      cosmetics: response?.data?.response?.cosmetics
-    }, false, 'config/getGeneralConfig')
+      config: {
+        avatar: response?.data?.response?.avatar,
+        frame: response?.data?.response?.frame,
+        foil: response?.data?.response?.foil,
+        background: response?.data?.response?.background
+      }
+    }, false, 'config/getUserConfig')
   },
   resetConfig: () => {
-    console.log('reset de config')
-    set(initialState, false, 'config/reset')
+    console.log('reset de user')
+    set({ config: initialState }, false, 'config/reset')
   },
 })
