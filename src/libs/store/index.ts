@@ -1,14 +1,15 @@
-import type { UserSlice, ConfigSlice, SharedSlice } from '@/libs/store/slices'
-import { userSlice, configSlice, sharedSlice } from '@/libs/store/slices'
+import type { UserSlice, GameConfigSlice, SharedSlice, ConfigSlice } from '@/libs/store/slices'
+import { userSlice, gameConfigSlice, sharedSlice, configSlice } from '@/libs/store/slices'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-export const useGameStore = create<ConfigSlice & UserSlice & SharedSlice>()(
+export const useGameStore = create<GameConfigSlice & UserSlice & SharedSlice & ConfigSlice>()(
   devtools(
     (...a) => ({
-      ...configSlice(...a),
+      ...gameConfigSlice(...a),
       ...userSlice(...a),
       ...sharedSlice(...a),
+      ...configSlice(...a)
     })
   )
 )
