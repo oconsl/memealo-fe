@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['var(--font-display)']
+      },
       colors: {
         martinique: {
           '50': '#f3f5fb',
@@ -66,7 +69,8 @@ const config: Config = {
           '1': '#6199B8',
           '2': '#9CBCD6',
           '3': '#3C4565',
-          '4': '#2B2C48'
+          '4': '#2B2C48',
+          '5': '#77BADD'
         }
       }
     }
