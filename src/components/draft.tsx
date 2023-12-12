@@ -13,14 +13,10 @@ const Draft = () => {
     "https://lanoticia.com/wp-content/uploads/2020/08/gato_png_crop1567201738546-jpg_673822677-1.jpg",
   ];
 
-  const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const handleImageClick = (index: number) => {
-    if (hoveredImage === index) {
-      setHoveredImage(null);
-    } else {
-      setHoveredImage(index);
-    }
+    setSelectedImage((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -30,18 +26,19 @@ const Draft = () => {
           key={index}
           src={image}
           alt={`Card ${index + 1}`}
-          className={`w-28 h-36 object-cover transform translate-y-${
-            hoveredImage === index ? "0" : "4"
-          } translate-x-${index > 0 ? "-8" : "0"} rounded-xl z-${
-            images.length - index
-          } border-solid border-2 border-slate-200 transition-transform ease-in-out duration-300 cursor-pointer`}
-          style={{ marginLeft: `${index > 0 ? "-11" : "0.5"}rem` }}
+          className={`w-[9vw] h-[24vh] object-cover rounded-xl border-solid border-2 border-slate-200 transition-transform ease-in-out duration-300 cursor-pointer ${
+            selectedImage === index ? "elevated" : ""
+          }`}
+          style={{
+            marginLeft: `${index > 0 ? "-14.5" : "0.5"}vw`,
+            transform: `translateY(${selectedImage === index ? "-8" : "12"}px)`, // Valor inicial diferente
+            zIndex: images.length - index,
+          }}
           onClick={() => handleImageClick(index)}
         />
       ))}
     </div>
   );
 };
-
 
 export default Draft;
