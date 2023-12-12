@@ -47,8 +47,6 @@ export default function Page() {
     }
   };
 
-  console.log({ errors });
-
   return (
     <main className="w-full bg-martinique-950 h-screen flex items-center justify-center">
       <section className="w-2/5 h-5/6 max-w-md py-10 bg-astral-900 relative flex flex-col items-center justify-center rounded-3xl shadow-xl border-[3px] border-astral-950">
@@ -95,14 +93,34 @@ export default function Page() {
             {isSubmitting ? <Loading /> : "Iniciar Sesión"}
           </button>
         </form>
+        <span className="text-brown-pod-300 text-lg z-20">
+          No tienes cuenta?{" "}
+          <a href="/register" className="text-shadow text-stroke">
+            Registrate
+          </a>
+        </span>
         <Image
           src={loginImage}
           alt="Login"
-          width={250}
-          height={250}
+          width={200}
+          height={200}
           className="absolute rounded-3xl bottom-0 right-0 z-10"
         />
       </section>
+      <Image
+        src="/memes/guy-pointing.webp"
+        width={200}
+        height={200}
+        alt="Meme"
+        className="absolute bottom-0 left-0 z-0"
+      />
+      <Image
+        src="/memes/guy-pointing-2.webp"
+        width={250}
+        height={250}
+        alt="Meme"
+        className="absolute bottom-0 right-0 z-0"
+      />
     </main>
   );
 }
