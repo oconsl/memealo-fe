@@ -13,7 +13,7 @@ const Deck = () => {
         src={image}
         alt="Imagen"
         style={imageStyle}
-        className="rounded-xl border-solid border-2 border-slate-200 border-b-8"
+        className="rounded-xl border-solid border-2 border-slate-200 border-b-8 cursor-pointer"
       />
     </div>
   );

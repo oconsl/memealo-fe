@@ -1,3 +1,6 @@
+"use client"
+import { useState } from "react";
+
 const Draft = () => {
   const images: string[] = [
     "https://www.nacionrex.com/export/sites/debate/img/2023/08/05/memes-gatos-2.jpg_687446817.jpg",
@@ -10,6 +13,16 @@ const Draft = () => {
     "https://lanoticia.com/wp-content/uploads/2020/08/gato_png_crop1567201738546-jpg_673822677-1.jpg",
   ];
 
+  const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+
+  const handleImageClick = (index: number) => {
+    if (hoveredImage === index) {
+      setHoveredImage(null);
+    } else {
+      setHoveredImage(index);
+    }
+  };
+
   return (
     <div className="relative flex flex-row items-end justify-center min-w-full min-h-full bg-transparent overflow-hidden">
       {images.map((image, index) => (
@@ -17,12 +30,18 @@ const Draft = () => {
           key={index}
           src={image}
           alt={`Card ${index + 1}`}
-          className={`w-28 h-36 object-cover transform translate-y-4 translate-x-${index > 0 ? '-8' : '0'} rounded-xl z-${images.length - index} border-solid border-2 border-slate-200`}
-          style={{ marginLeft: `${index > 0 ? '-11' : '0.5'}rem` }}
+          className={`w-28 h-36 object-cover transform translate-y-${
+            hoveredImage === index ? "0" : "4"
+          } translate-x-${index > 0 ? "-8" : "0"} rounded-xl z-${
+            images.length - index
+          } border-solid border-2 border-slate-200 transition-transform ease-in-out duration-300 cursor-pointer`}
+          style={{ marginLeft: `${index > 0 ? "-11" : "0.5"}rem` }}
+          onClick={() => handleImageClick(index)}
         />
       ))}
     </div>
   );
 };
+
 
 export default Draft;
