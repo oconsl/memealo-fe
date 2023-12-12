@@ -56,6 +56,11 @@ layer utilities {
       0 2px 0 theme('colors.astral.950'), -2px 2px 0 theme('colors.astral.950'),
       -2px 0 0 theme('colors.astral.950');
   }
+
+  .landing-stroke {
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
+    text-stroke: 2px theme("colors.coral-red.400");
+  }
 }
 
 :root {
