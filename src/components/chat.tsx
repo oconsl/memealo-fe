@@ -52,7 +52,7 @@ export default function Chat() {
             MEMECHAT
           </h1>
         </div>
-        <div className="rounded-3xl w-full bg-slate-800 flex items-end p-4 overflow-hidden min-h-[71.3vh] max-h-[71.3vh] justify-center">
+        <div className="rounded-3xl w-full bg-slate-800 flex items-end p-4 overflow-hidden min-h-[70vh] max-h-[70vh] justify-center">
           <div className="w-full h-auto mb-10">
             {messages.map((message, i) => (
               <div
@@ -61,8 +61,9 @@ export default function Chat() {
                   message.user === 'Me' ? 'justify-end' : ''
                 } flex m-1`}
               >
-                <div className=" bg-gray-300 rounded-3xl p-1.5 flex flex-row items-start max-w-[80%] my-3 min-h-fit relative shadow-lg shadow-black/40">
-                  <div className=" bg-black rounded-full h-11 w-11 mr-2 translate-x-[-15px] translate-y-[-20px] absolute border-2 border-violet-700 overflow-hidden">
+                <div className=" bg-gray-300 rounded-3xl p-1.5 flex flex-row items-start max-w-[80%] my-3 min-h-fit relative shadow-lg shadow-black/40 min-w-[150px]">
+                <div className='min-w-[100px] px-2 w-fit bg-brown-pod-300 translate-x-3 -translate-y-6 rounded-t-full absolute text-slate-950 text-center text-sm'>{message.user}</div>
+                  <div className=" rounded-full h-11 w-11 mr-2 translate-x-[-15px] translate-y-[-20px] absolute border-2 border-violet-700 overflow-hidden">
                     <img
                       src="/profile-icon.jpg"
                       alt=""
@@ -72,8 +73,7 @@ export default function Chat() {
                   <div
                     className={`${squada.variable} font-squada h-full items-center flex`}
                   >
-                    <p className="whitespace-pre-line break-all ml-8 mr-1">
-                      <span className="font-medium">{message.user}:</span>
+                    <p className="whitespace-pre-line break-all ml-8 mr-1 text-slate-950 justify-center">
                       <span className="font-medium">{message.message}</span>
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export default function Chat() {
               type="text"
               onChange={(event) => setMessage(event.target.value)}
               value={message}
-              className="h-10 rounded-l-full border-2 border-r-0 border-slate-800 focus:outline-none pl-14 w-60 bg-slate-300"
+              className="h-10 rounded-l-full border-2 border-r-0 border-slate-800 focus:outline-none pl-14 w-60 bg-slate-300 text-slate-950"
             />
             <button className="h-10 w-10 bg-coral-red-200 rounded-r-full border-2 border-l-0 border-slate-800 ">
               <img src="/send.svg" alt="" className="h-full w-full" />

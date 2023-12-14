@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         squada: "var(--squada-one)",
+        display: ["var(--font-display)"],
       },
       colors: {
         martinique: {
@@ -64,6 +65,13 @@ const config: Config = {
           "800": "#30465a",
           "900": "#2b3c4e",
           "950": "#192633",
+        },
+        album_view: {
+          "1": "#6199B8",
+          "2": "#9CBCD6",
+          "3": "#3C4565",
+          "4": "#2B2C48",
+          "5": "#77BADD",
         },
       },
     },
