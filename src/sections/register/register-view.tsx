@@ -2,7 +2,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Squada_One } from "next/font/google";
-import Head from "next/head";
+import Image from "next/image";
+
+
 
 const Squada = Squada_One({ subsets: ["latin"], weight: "400" });
 
@@ -17,26 +19,47 @@ export default function RegisterView() {
   });
   return (
     <>
-      <div className="bg-martinique-950 h-[100svh] w-screen">
-        
+    
+      <div className="bg-martinique-950 h-[100svh] w-screen">  
         <div className={Squada.className}>
-          <h1 className=" text-brown-pod-logo-color text-9xl text-stroke">
+          <h1 className=" text-brown-pod-logo-color text-9xl title-shadow stroke z-10">
             {" "}
             Bienvenido a memealo{" "}
           </h1>
           
+          <div className="flex ">
+          
+          
+          <div className=" grid grid-cols-2">
+        
+        <Image src="/Amazed-meme.gif" alt='Amazed gif' width={300} height={300} objectFit="cover">
+        </Image>
+
+        <Image src="/Po-amazed.gif" alt='Kung Fu panda amazed gif' width={300} height={600} objectFit="cover">
+        </Image>
+        
+        <Image src="/SpongeBob-amazed.gif" alt='SpongeBob amazed gif' width={300} height={300} objectFit="cover">
+        </Image>
+
+        <Image src="/Chris-Farley-Amazed.gif" alt='Chris Farley amazed gif' width={300} height={300} objectFit="cover">
+        </Image>
+        
+        
+        
+
+        </div>  
           <div className=" box-border px-28 rounded-xl border-4 border-solid border-martinique-border bg-martinique-inner-color shadow-2xl fixed right-0 mr-20">
-            <h2 className="text-brown-pod-logo-color text-7xl mb-28 -rotate-12 text-center mt-28 text-stroke"> memealo! </h2>
+            <h2 className="text-brown-pod-logo-color text-7xl mb-28 -rotate-12 text-center mt-20  title-shadow stroke "> memealo! </h2>
             
             <form className="text-white" onSubmit={onSubmit}>
-              <div className="flex flex-col justify-center items-center mb-20">
+              <div className="flex flex-col justify-center items-center mb-5  ">
                 
               <div className="flex flex-col">
 
               
               <label className="text-xl" htmlFor="username"> Nombre De Usuario: </label>
               <input
-                className="rounded-3xl  border-2  bg-martinique-input-gray border-martinique-border text-black  mb-5 shadow-2xl"
+                className="rounded-3xl border-2 bg-martinique-input-gray border-martinique-border text-black  mb-5 shadow-2xl"
                 id="username"
                 type="text"
                 {...register("username", {
@@ -45,9 +68,9 @@ export default function RegisterView() {
               />
 
               {errors.username && (
-                <span className=" inline-block text-red-600  bg-lime-500">
+                <span className="text-orange-500">
                   {" "}
-                  El nombre de usuario es requerido
+                  El nombre de usuario es requerido{" "}
                 </span>
               )}
 
@@ -69,15 +92,15 @@ export default function RegisterView() {
               />
 
               {errors.email && (
-                <span className=" inline-block text-red-600   bg-lime-500">
+                <span className=" text-orange-500">
                   {" "}
-                  El correo electrónico es requerido
+                  El correo electrónico es requerido{" "}
                 </span>
               )}
 
               <label className="text-xl" htmlFor="password"> Contraseña: </label>
               <input
-                className="rounded-3xl border-2  bg-martinique-input-gray border-martinique-border  text-black shadow-2xl "
+                className="rounded-3xl border-2  bg-martinique-input-gray border-martinique-border  text-black  shadow-2xl "
                 id="password"
                 type="password"
                 {...register("password", {
@@ -86,14 +109,14 @@ export default function RegisterView() {
               />
 
               {errors.password && (
-                <span className="text-red-600  bg-lime-500 inline-block">
+                <span className="text-orange-500">
                   {" "}
                   La contraseña es requerida{" "}
                 </span>
               )}
 
               <button
-                className="text-4xl text-brown-pod-logo-color mt-32 text-stroke"
+                className="text-4xl text-brown-pod-logo-color mt-10 title-shadow stroke"
                 type="submit"
               >
                 Registrarse
@@ -104,8 +127,10 @@ export default function RegisterView() {
               </div>
             </form>
           </div>
+          </div>
         </div>
       </div>
+      
     </>
   );
 }

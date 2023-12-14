@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
 @layer utilities {
   .button-box-shadow {
     box-shadow:
@@ -17,7 +18,7 @@
 
   .stroke {
     -webkit-text-stroke: 2px theme("colors.coral-red.400");
-    text-stroke: 2px theme("colors.coral-red.400");
+    text-stroke: 1px theme("colors.coral-red.400");
   }
 
   .light-stroke {
@@ -47,7 +48,7 @@
     text-shadow: none;
   }
 
-  .text-stroke {
+  .text-stroke-none {
     text-shadow: none;
   }
 
@@ -62,6 +63,7 @@
       -2px 2px 0 theme("colors.astral.950"),
       -2px 0 0 theme("colors.astral.950");
   }
+
 }
 
 :root {
