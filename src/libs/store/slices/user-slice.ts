@@ -27,11 +27,7 @@ export const createUserSlice: StateCreator<
   [],
   UserSlice
 > = (set) => ({
-  //Cambiar luego a initial state
-  user: {
-    isLogged:true,
-    username:'pepito'
-  },
+  user:initialState,
   signIn: async (username: string, password: string) => {
     const response = await axios.post('/api/auth/sign-in', { username, password })
     set({
