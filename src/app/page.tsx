@@ -1,9 +1,7 @@
-import HomeView from '@/sections/home-view'
+import { LandingView } from "@/sections"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col w-auto bg-slate-900">
-      <HomeView />
-    </main>
+    <LandingView/>
   )
 }
