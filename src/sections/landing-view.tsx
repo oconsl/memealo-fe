@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
-import React from 'react'
+
 import Button from '@/components/button'
 import loginImage from '@/assets/images/login.webp'
-const LandingView = () => {
+import Image from 'next/image'
+export default function LandingView  ()  {
   return (
     <>
       <header className="border border-yellow-900 bg-martinique-900 h-[10vh] w-full">
@@ -25,11 +25,25 @@ const LandingView = () => {
         </div>
 
         <div className="border border-yellow-600 w-[20%] rotate-[145deg] fixed -left-[6%] -top-4 z-[1]">
-          <img className="w-fit" src="memes/yao-ming.webp" alt="yao ming" />
+        <Image
+          src='/memes/yao-ming.webp'
+          alt="yao ming" 
+          width={250}
+          height={250}
+          className="w-fit" 
+        />
+          
         </div>
 
         <div className="border border-red-600 w-[10%] rotate-180 fixed right-[47%] -top-14">
-          <img className="w-fit" src="memes/sponge-bob.webp" alt="sponge bob happy" />
+        <Image
+          src='/memes/sponge-bob.webp'
+          alt="sponge bob happy" 
+          width={250}
+          height={250}
+          className="w-fit"
+        />
+          
         </div>
 
         <div className="border border-red-600 w-[5%] fixed right-[2%] bottom-[5vh] z-[1]">
@@ -98,4 +112,4 @@ const LandingView = () => {
   )
 }
 
-export default LandingView
+
