@@ -68,7 +68,7 @@ export default function Page() {
           className="flex w-full h-4/6 my-3 flex-col text-xl items-center justify-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <label className="flex flex-col w-5/6 relative z-20 text-stroke">
+          <label className="flex flex-col w-5/6 relative z-20 label-stroke">
             <span>Nombre De Usuario:</span>
             <input
               className="my-3 mb-0 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"
@@ -82,7 +82,7 @@ export default function Page() {
               ""
             )}
           </label>
-          <label className="flex my-3 flex-col w-5/6 z-20 text-stroke">
+          <label className="flex my-3 flex-col w-5/6 z-20 label-stroke">
             Contraseña:
             <input
               className="my-3 mb-0 rounded-full text-black py-1 px-4 transition-all focus:outline focus:outline-2 focus:outline-astral-950"

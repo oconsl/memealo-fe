@@ -40,19 +40,19 @@ const config: Config = {
           "900": "#6d341a",
           "950": "#401a0a",
         },
-        'coral-red': {
-          '50': '#fff1f1',
-          '100': '#ffe1e2',
-          '200': '#ffc7c8',
-          '300': '#ffa0a2',
-          '400': '#ff6a6d',
-          '500': '#f83b3f',
-          '600': '#e61c20',
-          '700': '#c11418',
-          '800': '#a01417',
-          '900': '#84181a',
-          '950': '#480708',
-          "special": "#ff7e81",
+        "coral-red": {
+          "50": "#fff1f1",
+          "100": "#ffe1e2",
+          "200": "#ffc7c8",
+          "300": "#ffa0a2",
+          "400": "#ff6a6d",
+          "500": "#f83b3f",
+          "600": "#e61c20",
+          "700": "#c11418",
+          "800": "#a01417",
+          "900": "#84181a",
+          "950": "#480708",
+          special: "#ff7e81",
         },
         astral: {
           "50": "#f1f7fa",
@@ -77,17 +77,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    function ({ addUtilities }: any) {
-      const newUtilities = {
-        ".text-stroke": {
-          "-webkit-text-stroke": "2px #FF7E81",
-          "text-shadow": "0px 4px 0px #93C5FD",
-        },
-      };
-
-      addUtilities(newUtilities, ["responsive", "hover"]);
-    },
-  ],
 };
 export default config;
