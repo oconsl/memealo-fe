@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        squada: "var(--squada-one)",
         display: ["var(--font-display)"],
       },
       colors: {
@@ -30,7 +31,7 @@ const config: Config = {
           "50": "#fdf9ed",
           "100": "#f8eecd",
           "200": "#f1da96",
-          "300": "#f7c987",
+          "300": "#eac35f",
           "400": "#e5ac3a",
           "500": "#dd8e23",
           "600": "#c36c1c",
@@ -39,18 +40,18 @@ const config: Config = {
           "900": "#6d341a",
           "950": "#401a0a",
         },
-        "coral-red": {
-          "50": "#fff1f1",
-          "100": "#ffe1e2",
-          "200": "#ffc7c8",
-          "300": "#ffa0a2",
-          "400": "#ff6a6d",
-          "500": "#f83b3f",
-          "600": "#e61c20",
-          "700": "#c11418",
-          "800": "#a01417",
-          "900": "#84181a",
-          "950": "#480708",
+        'coral-red': {
+          '50': '#fff1f1',
+          '100': '#ffe1e2',
+          '200': '#ffc7c8',
+          '300': '#ffa0a2',
+          '400': '#ff6a6d',
+          '500': '#f83b3f',
+          '600': '#e61c20',
+          '700': '#c11418',
+          '800': '#a01417',
+          '900': '#84181a',
+          '950': '#480708',
           "special": "#ff7e81",
         },
         astral: {
@@ -66,9 +67,27 @@ const config: Config = {
           "900": "#2b3c4e",
           "950": "#192633",
         },
+        album_view: {
+          "1": "#6199B8",
+          "2": "#9CBCD6",
+          "3": "#3C4565",
+          "4": "#2B2C48",
+          "5": "#77BADD",
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        ".text-stroke": {
+          "-webkit-text-stroke": "2px #FF7E81",
+          "text-shadow": "0px 4px 0px #93C5FD",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
 };
 export default config;
