@@ -1,43 +1,44 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/lib/**/*.{js,ts,jsx,tsx,mdx}'
+    "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-display)']
+        squada: "var(--squada-one)",
+        display: ["var(--font-display)"],
       },
       colors: {
         martinique: {
-          '50': '#f3f5fb',
-          '100': '#e5e8f4',
-          '200': '#d1d8ec',
-          '300': '#b1bedf',
-          '400': '#8b9ccf',
-          '500': '#6f7fc2',
-          '600': '#5c67b4',
-          '700': '#5157a4',
-          '800': '#464887',
-          '900': '#3c3f6c',
-          '950': '#2b2c48'
+          "50": "#f3f5fb",
+          "100": "#e5e8f4",
+          "200": "#d1d8ec",
+          "300": "#b1bedf",
+          "400": "#8b9ccf",
+          "500": "#6f7fc2",
+          "600": "#5c67b4",
+          "700": "#5157a4",
+          "800": "#464887",
+          "900": "#3c3f6c",
+          "950": "#2b2c48",
         },
-        'brown-pod': {
-          '50': '#fdf9ed',
-          '100': '#f8eecd',
-          '200': '#f1da96',
-          '300': '#eac35f',
-          '400': '#e5ac3a',
-          '500': '#dd8e23',
-          '600': '#c36c1c',
-          '700': '#a34e1a',
-          '800': '#853d1b',
-          '900': '#6d341a',
-          '950': '#401a0a'
+        "brown-pod": {
+          "50": "#fdf9ed",
+          "100": "#f8eecd",
+          "200": "#f1da96",
+          "300": "#eac35f",
+          "400": "#e5ac3a",
+          "500": "#dd8e23",
+          "600": "#c36c1c",
+          "700": "#a34e1a",
+          "800": "#853d1b",
+          "900": "#6d341a",
+          "950": "#401a0a",
         },
         'coral-red': {
           '50': '#fff1f1',
@@ -54,28 +55,39 @@ const config: Config = {
           "special": "#ff7e81",
         },
         astral: {
-          '50': '#f1f7fa',
-          '100': '#dceaf1',
-          '200': '#bdd7e4',
-          '300': '#8fbad1',
-          '400': '#5a93b6',
-          '500': '#3f789b',
-          '600': '#376283',
-          '700': '#32526c',
-          '800': '#30465a',
-          '900': '#2b3c4e',
-          '950': '#192633'
+          "50": "#f1f7fa",
+          "100": "#dceaf1",
+          "200": "#bdd7e4",
+          "300": "#8fbad1",
+          "400": "#5a93b6",
+          "500": "#3f789b",
+          "600": "#376283",
+          "700": "#32526c",
+          "800": "#30465a",
+          "900": "#2b3c4e",
+          "950": "#192633",
         },
         album_view: {
-          '1': '#6199B8',
-          '2': '#9CBCD6',
-          '3': '#3C4565',
-          '4': '#2B2C48',
-          '5': '#77BADD'
-        }
-      }
-    }
+          "1": "#6199B8",
+          "2": "#9CBCD6",
+          "3": "#3C4565",
+          "4": "#2B2C48",
+          "5": "#77BADD",
+        },
+      },
+    },
   },
-  plugins: []
-}
-export default config
+  plugins: [
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        ".text-stroke": {
+          "-webkit-text-stroke": "2px #FF7E81",
+          "text-shadow": "0px 4px 0px #93C5FD",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
+};
+export default config;
