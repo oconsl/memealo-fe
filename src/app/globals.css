@@ -41,11 +41,15 @@
     text-shadow: 1px 3px 2px theme("colors.astral.400");
   }
 
+  .text-stroke {
+    text-stroke: 1px theme("colors.coral-red.400");
+  }
+
   .title-shadow-none {
     text-shadow: none;
   }
 
-  .text-stroke {
+  .text-stroke-none {
     text-shadow: none;
   }
 
