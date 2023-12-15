@@ -64,6 +64,9 @@
       -2px 0 0 theme("colors.astral.950");
   }
 
+  .situation-text-stroke {
+    text-shadow: 0.5px 0px 0px white, 0px 0.5px 0px white, -0.5px 0px 0px white, 0px -0.5px 0px white;
+  }
 }
 
 :root {

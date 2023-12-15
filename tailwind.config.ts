@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      dropShadow:{
+        'situation-shadow-down-right': ' 0 20px 100px #F7C9877D',
+      },
       fontFamily: {
         display: ["var(--font-display)"],
       },
@@ -27,7 +30,7 @@ const config: Config = {
         'album-page-height':'826px'
       },
       borderRadius:{
-        'album-outline-border':'20px'
+        'twenty':'20px'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
