@@ -1,17 +1,18 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Image from "next/image";
 import Loading from "@/components/loading";
-
 import loginImage from "@/assets/images/login.webp";
+import { useGameStore } from "@/libs/store";
 
 type Inputs = {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 };
 
 let loginSchema = object({
@@ -30,6 +31,9 @@ export default function Page() {
     resolver: yupResolver(loginSchema),
   });
 
+  const userStore = useGameStore((state) => state.user);
+  const login = useGameStore((state) => state.signIn);
+
   const {
     register,
     handleSubmit,
@@ -38,16 +42,21 @@ export default function Page() {
 
   const [error, setError] = useState<any>(false);
 
+  useEffect(() => {
+    if (userStore.isLogged) {
+      redirect("/");
+    }
+  }, [userStore.isLogged]);
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setError(false);
     try {
       await loginSchema.validate(data);
+      await login(data.username, data.password);
+      if (userStore.isLogged) redirect("/");
     } catch (error) {
       setError(error);
     }
   };
-
-  console.log({ errors });
 
   return (
     <main className="w-full bg-martinique-950 h-screen flex items-center justify-center">
@@ -95,14 +104,34 @@ export default function Page() {
             {isSubmitting ? <Loading /> : "Iniciar Sesión"}
           </button>
         </form>
+        <span className="text-brown-pod-300 text-lg z-20">
+          No tienes cuenta?{" "}
+          <a href="/register" className="text-shadow text-stroke">
+            Registrate
+          </a>
+        </span>
         <Image
           src={loginImage}
           alt="Login"
-          width={250}
-          height={250}
+          width={200}
+          height={200}
           className="absolute rounded-3xl bottom-0 right-0 z-10"
         />
       </section>
+      <Image
+        src="/memes/guy-pointing.webp"
+        width={200}
+        height={200}
+        alt="Meme"
+        className="absolute bottom-0 left-0 z-0"
+      />
+      <Image
+        src="/memes/guy-pointing-2.webp"
+        width={250}
+        height={250}
+        alt="Meme"
+        className="absolute bottom-0 right-0 z-0"
+      />
     </main>
   );
 }
