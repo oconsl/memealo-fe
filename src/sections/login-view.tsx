@@ -1,17 +1,18 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Image from "next/image";
 import Loading from "@/components/loading";
-
 import loginImage from "@/assets/images/login.webp";
+import { useGameStore } from "@/libs/store";
 
 type Inputs = {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 };
 
 let loginSchema = object({
@@ -30,6 +31,9 @@ export default function Page() {
     resolver: yupResolver(loginSchema),
   });
 
+  const userStore = useGameStore((state) => state.user);
+  const login = useGameStore((state) => state.signIn);
+
   const {
     register,
     handleSubmit,
@@ -38,10 +42,17 @@ export default function Page() {
 
   const [error, setError] = useState<any>(false);
 
+  useEffect(() => {
+    if (userStore.isLogged) {
+      redirect("/");
+    }
+  }, [userStore.isLogged]);
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setError(false);
     try {
       await loginSchema.validate(data);
+      await login(data.username, data.password);
+      if (userStore.isLogged) redirect("/");
     } catch (error) {
       setError(error);
     }
