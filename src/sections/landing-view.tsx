@@ -2,9 +2,7 @@
 
 import { useGameStore } from '@/libs/store'
 import Button from '@/components/button'
-import loginImage from '@/assets/images/login.webp'
 import Image from 'next/image'
-import { userSlice } from '@/libs/store/slices'
 import { useRouter } from 'next/navigation'
 
 export default function LandingView() {
@@ -54,7 +52,7 @@ export default function LandingView() {
 
       <main className="bg-martinique-900 w-full h-[80vh]  relative">
         <div className=" w-fit  -rotate-12 fixed left-16 top-16 z-[2]">
-          <h1 className="text-brown-pod-200 title-shadow stroke text-[7rem]">
+          <h1 className="text-brown-pod-200 title-shadow stroke text-[8rem]">
             MEMEALO!
           </h1>
         </div>
