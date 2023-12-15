@@ -1,9 +1,6 @@
-import React from 'react'
-
-const createRoom = () => {
+import { CreateRoomView } from "@/sections/room"
+export default function CreateRoom ()  {
   return (
-    <div>page</div>
+    <CreateRoomView/>
   )
 }
-
-export default createRoom
