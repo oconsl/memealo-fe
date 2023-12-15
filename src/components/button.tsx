@@ -7,7 +7,7 @@ export default function Button({
   buttonClasses,
 }: {
   message: string;
-  onClick?: Function;
+  onClick?: Function ;
   divClasses?: string;
   buttonClasses?: string;
 }) {
