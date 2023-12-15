@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const Deck = () => {
   const image: string = "https://i.pinimg.com/736x/17/0a/81/170a815040a32fcc2f596c59c9284c15.jpg";
 
