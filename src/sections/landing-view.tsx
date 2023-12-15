@@ -10,8 +10,7 @@ import { useRouter } from 'next/navigation'
 export default function LandingView() {
   //Estados de zustand
   const isLogged = useGameStore((state) => state.user.isLogged)
-  const {resetUser} = useGameStore()
-  console.log(isLogged)
+  const { resetUser } = useGameStore()
 
   const router = useRouter()
 
@@ -37,7 +36,7 @@ export default function LandingView() {
 
   return (
     <>
-      <header className="border border-yellow-900 bg-martinique-900 h-[10vh] w-full">
+      <header className=" bg-martinique-900 h-[10vh] w-full">
         <div className="flex flex-row items-center justify-end gap-8 p-4">
           {isLogged ? (
             <div>
@@ -53,14 +52,14 @@ export default function LandingView() {
         </div>
       </header>
 
-      <main className="bg-martinique-900 w-full h-[80vh] border border-yellow-400 relative">
-        <div className="border w-fit border-red-500 -rotate-12 fixed left-16 top-16 z-[2]">
-          <h1 className="text-brown-pod-200 title-shadow stroke text-9xl">
+      <main className="bg-martinique-900 w-full h-[80vh]  relative">
+        <div className=" w-fit  -rotate-12 fixed left-16 top-16 z-[2]">
+          <h1 className="text-brown-pod-200 title-shadow stroke text-[7rem]">
             MEMEALO!
           </h1>
         </div>
 
-        <div className="border border-yellow-600 w-[20%] rotate-[145deg] fixed -left-[6%] -top-4 z-[1]">
+        <div className=" w-[20%] rotate-[145deg] fixed -left-[6%] -top-4 z-[1]">
           <Image
             src="/memes/yao-ming.webp"
             alt="yao ming"
@@ -70,7 +69,7 @@ export default function LandingView() {
           />
         </div>
 
-        <div className="border border-red-600 w-[10%] rotate-180 fixed right-[47%] -top-14">
+        <div className=" w-[10%] rotate-180 fixed right-[47%] -top-14">
           <Image
             src="/memes/sponge-bob.webp"
             alt="sponge bob happy"
@@ -80,7 +79,7 @@ export default function LandingView() {
           />
         </div>
 
-        <div className="border border-red-600 w-[5%] fixed right-[2%] bottom-[5vh] z-[1]">
+        <div className=" w-[5%] fixed right-[2%] bottom-[5vh] z-[1]">
           <Image
             width={150}
             height={150}
@@ -90,7 +89,7 @@ export default function LandingView() {
           />
         </div>
 
-        <div className="border border-red-600 w-[250px] min-w[250px] fixed right-32 bottom-[18rem] z-[0]">
+        <div className=" w-[250px] min-w[250px] fixed right-32 bottom-[18rem] z-[0]">
           <Image
             width={150}
             height={150}
@@ -100,7 +99,7 @@ export default function LandingView() {
           />
         </div>
 
-        <div className="border border-red-600 w-[45px] fixed bottom-0 right-[3%] z-[1]">
+        <div className=" w-[45px] fixed bottom-0 right-[3%] z-[1]">
           <Image
             width={150}
             height={150}
@@ -110,8 +109,66 @@ export default function LandingView() {
           />
         </div>
 
+        <div className="  w-[40%] h-[50%] fixed  bottom-[11%] z-[0] left-[10%]">
+          <div className="absolute -left-[15%] bottom-0 w-[35%] -rotate-[0] z-[10]">
+            <Image
+              width={150}
+              height={150}
+              className="w-fit"
+              src="/landing-image/will-is-mid.png"
+              alt="hard choice"
+            />
+          </div>
+          <div className="absolute border-[5px] rounded-[3%] left-[0] w-[25%] -rotate-[15deg] z-[1]">
+            <Image
+              width={150}
+              height={150}
+              className="w-fit"
+              src="/landing-image/hard-choice.webp"
+              alt="hard choice"
+            />
+          </div>
+          <div className="absolute border-[5px] rounded-[3%] left-[27%] w-[35%] rotate-[15deg] z-[0]">
+            <Image
+              width={150}
+              height={150}
+              className="w-fit"
+              src="/landing-image/who-is-spiderman.webp"
+              alt="who is spiderman"
+            />
+          </div>
+          <div className="absolute border-[5px] rounded-[3%] left-[58%] w-[34%] rotate-[3deg] z-0">
+            <Image
+              width={150}
+              height={150}
+              className="w-fit"
+              src="/landing-image/wasted.webp"
+              alt="wasted"
+            />
+          </div>
+
+          <div className="absolute border-[5px] rounded-[3%] left-[10%] bottom-7 w-[55%] -rotate-[10deg] z-[3]">
+            <Image
+              width={150}
+              height={150}
+              className="w-full"
+              src="/landing-image/this-is-fine.png"
+              alt="this is fine"
+            />
+          </div>
+          <div className="absolute border-[7px] rounded-[3%] right-0 bottom-6 w-[34%] -rotate-[10deg] z-[2]">
+            <Image
+              width={150}
+              height={150}
+              className="w-full"
+              src="/landing-image/tom.png"
+              alt="tom"
+            />
+          </div>
+        </div>
+
         {isLogged ? (
-          <div className="border border-blue-500 flex flex-col gap-3 fixed right-32 bottom-[10rem] ">
+          <div className=" flex flex-col gap-3 fixed right-32 bottom-[10rem] ">
             <span className="text-brown-pod-200 title-shadow landing-stroke text-4xl rotate-12 relative left-[75%] top-6 w-fit">
               memealo!
             </span>
@@ -134,7 +191,7 @@ export default function LandingView() {
             </div>
           </div>
         ) : (
-          <div className="border border-blue-500 flex flex-col gap-3 fixed right-32 bottom-[14.5rem] ">
+          <div className=" flex flex-col gap-3 fixed right-32 bottom-[14.5rem] ">
             <Button
               message={'registrarse'}
               divClasses="w-[15%] min-w-[250px] h-[]"
