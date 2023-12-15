@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-layer utilities {
+@layer utilities {
   .button-box-shadow {
     box-shadow: inset 0px 0.1rem 0.3rem theme('colors.brown-pod.100'),
       0px 0.12rem 0px theme('colors.martinique.950');
