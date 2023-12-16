@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+// SACAR LOS ANY PONER LOS TIPOS CORRECTOS, HEADER CON INFO DE USUARIO, SUMAR Y BUTTON DE BUY Y AÑADIR UN FONDO DE TIENDA  
 const cards = [
   {
     id: 1,
