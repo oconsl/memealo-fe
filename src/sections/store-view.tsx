@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-// SACAR LOS ANY PONER LOS TIPOS CORRECTOS, HEADER CON INFO DE USUARIO, SUMAR Y BUTTON DE BUY Y AÑADIR UN FONDO DE TIENDA  
-const cards = [
+// import Link from 'next/link';
+// IF de que elementos ya posee el usuario, y filtrar esto si lo desea, implementar diseño tcg en vista previa, traer la informacion del usuario
+const cards: Product[] = [
   {
     id: 1,
     name: "Card 1",
@@ -52,7 +53,7 @@ const cards = [
   },
 ];
 
-const backgrounds = [
+const backgrounds: Product[] = [
   {
     id: 1,
     name: "Background 1",
@@ -103,7 +104,7 @@ const backgrounds = [
   },
 ];
 
-const avatars = [
+const avatars: Product[] = [
   {
     id: 1,
     name: "Avatar 1",
@@ -154,18 +155,18 @@ const avatars = [
   },
 ];
 
-// type Product = {
-//   id: number;
-//   name: string;
-//   price: string;
-//   description: string;
-// };
+type Product = {
+  id: number;
+  name: string;
+  price: string;
+  description: string;
+};
 
-//   type ProductsByType = {
-//     Cards: Product[];
-//     Backgrounds: Product[];
-//     Avatars: Product[];
-//   };
+  type ProductsByType = {
+    Cards: Product[];
+    Backgrounds: Product[];
+    Avatars: Product[];
+  };
 
 const productsByType: ProductsByType = {
   Cards: cards,
@@ -173,24 +174,22 @@ const productsByType: ProductsByType = {
   Avatars: avatars,
 };
 
-type ProductsByType = {
-  [key: string]: any[];
-};
-
 export default function Page() {
   const [selectedContent, setSelectedContent] = useState<string>("Cards");
-
-  const [selectedCard, setSelectedCard] = useState<any>(cards[0]);
-  const [selectedBackground, setSelectedBackground] = useState<any>(
+  const [selectedCard, setSelectedCard] = useState<Product>(cards[0]);
+  const [selectedBackground, setSelectedBackground] = useState<Product>(
     backgrounds[0]
   );
-  const [selectedAvatar, setSelectedAvatar] = useState<any>(avatars[0]);
+  const [selectedAvatar, setSelectedAvatar] = useState<Product>(avatars[0]);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [userCoins, setUserCoins] = useState<number>(100);
+
 
   const handleContentSelect = (content: string) => {
     setSelectedContent(content);
   };
 
-  const handleProductSelect = (product: any) => {
+  const handleProductSelect = (product: Product) => {
     switch (selectedContent) {
       case "Cards":
         setSelectedCard(product);
@@ -206,12 +205,36 @@ export default function Page() {
     }
   };
 
-  const renderSelectedContent = (product: any) => {
+  const handleBuyClick = () => {
+    const totalPrice = calculateTotal();
+    const canBuy = totalPrice <= userCoins; 
+    if (canBuy) {
+      setUserCoins(userCoins - totalPrice);
+      alert("Felicidades sos una maquina compra objetos!!.");
+      setShowModal(false)
+    } else {
+      alert("No tienes suficientes monedas para comprar estos productos.");
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const calculateTotal = () => {
+    let total = 0;
+    total += parseInt(selectedCard.price.slice(1));
+    total += parseInt(selectedBackground.price.slice(1));
+    total += parseInt(selectedAvatar.price.slice(1));
+    return total;
+  };
+
+  const renderSelectedContent = (product: Product | undefined) => {
     return (
       product && (
         <div>
           {/* <h2>Contenido seleccionado: Carta</h2> */}
-          <div className="bg-white rounded-lg shadow-md p-6 w-80">
+          <div className="bg-white rounded-lg shadow-md p-6 w-44">
             <h2 className="text-gray-900 font-semibold mb-2">{product.name}</h2>
             <p className="text-gray-600 mb-4">{product.description}</p>
             <p className="text-gray-800 font-semibold">{product.price}</p>
@@ -221,40 +244,69 @@ export default function Page() {
     );
   };
 
+  const username = "SxG_4Ever<3";
+
   return (
-    <main className="w-full bg-martinique-950 h-screen flex">
-      {/* INFORMACION DEL USUARIO */}
-      <></>
+    <main className="w-full bg-martinique-950 h-screen flex flex-col  ">
+      {/* ENCABEZADO */}
+      <div className="flex justify-between items-center p-2 pl-4 pr-4 m-2 bg-album_view-3 text-white rounded-xl">
+        <h1 className="text-4xl font-bold text-center">BIENVENIDOS A LA TIENDA DE MEMEALOOOOOOOOO !!!!!!! </h1>
+        {/* <h1>
+           <Link href="/">Home</Link>
+           <Link href="/login">Login</Link>
+           <Link href="/rooms">Rooms</Link>
+        </h1> */}
+        <div className="flex items-center">
+          <p className="mr-2 text-2xl text-green-400">{userCoins} monedas</p>
+          <p className="mr-4 text-2xl text-violet-400">{username}</p>
+          <div className="h-10 w-10 rounded-full bg-gray-300">
+            {/* Agregar la foto de perfil del usuario aca */}
+          </div>
+        </div>
+      </div>
       {/* TIENDA */}
-      <>
-        {/* Contenido seleccionado */}
+      <div className="w-full h-screen flex">
+        {/* Contenido Vista previa */}
         <div className="w-3/5 h-[80vh] sm:w-3/5 flex flex-wrap justify-center gap-3 p-4 sm:h-auto bg-martinique-950 border">
-          {/* <h1>Contendio Seleccionado {selectedContent}</h1> */}
-          <div>
+          {/* Card */}
+          <div className="absolute top-36">
             {renderSelectedContent(
               selectedContent === "Cards" ? selectedCard : selectedCard
             )}
           </div>
-          <div>
+          { /* Background */}
+          <div className="absolute top-80 ml-52">
             {renderSelectedContent(
               selectedContent === "Backgrounds"
                 ? selectedBackground
                 : selectedBackground
             )}
           </div>
-          <div>
+          {/* Avatar */}
+          <div className=" absolute top-80 mr-52">
             {renderSelectedContent(
               selectedContent === "Avatars" ? selectedAvatar : selectedAvatar
             )}
           </div>
+          {/* BUTTON BUY */}
+          <div className="absolute bottom-6 left-[36vw]">
+            <button
+              className="p-2 pl-4 pr-4 border rounded-lg bg-green-500 shadow-md shadow-zinc-900 hover:bg-sky-500"
+              onClick={() => setShowModal(true)}
+            >
+              <h1 className="text-xl">BUY</h1>
+            </button>
+          </div>
         </div>
         {/* Seleccionar contenido */}
-        <div className="w-4/5 h-[80vh] sm:w-4/5 sm:h-auto border">
+        <div className="w-4/5 h-[80vh] sm:w-4/5 sm:h-auto border bg-teal-700">
           {/* Pestañas de selección */}
-          <div className="flex border-b">
+          <div className="flex border-b bg-martinique-950">
             <button
               className={`px-4 py-2 hover:border-b-2 hover:border-indigo-500  focus:outline-none ${
-                selectedContent === "Cards" ? "border-b-2 border-indigo-500" : "text-gray-500 "
+                selectedContent === "Cards"
+                  ? "border-b-2 border-indigo-500"
+                  : "text-gray-500 "
               }`}
               onClick={() => handleContentSelect("Cards")}
             >
@@ -262,7 +314,9 @@ export default function Page() {
             </button>
             <button
               className={`px-4 py-2 hover:border-b-2 hover:border-indigo-500 focus:outline-none ${
-                selectedContent === "Backgrounds" ? "border-b-2 border-indigo-500" : "text-gray-500 "
+                selectedContent === "Backgrounds"
+                  ? "border-b-2 border-indigo-500"
+                  : "text-gray-500 "
               }`}
               onClick={() => handleContentSelect("Backgrounds")}
             >
@@ -270,8 +324,10 @@ export default function Page() {
             </button>
             <button
               className={`px-4 py-2 hover:border-b-2 hover:border-indigo-500 focus:outline-none ${
-                selectedContent == "Avatars" ? "border-b-2 border-indigo-500" : "text-gray-500 "
-              }`}   
+                selectedContent == "Avatars"
+                  ? "border-b-2 border-indigo-500"
+                  : "text-gray-500 "
+              }`}
               onClick={() => handleContentSelect("Avatars")}
             >
               Avatars
@@ -280,7 +336,7 @@ export default function Page() {
           {/* Contenido de las pestañas */}
           <div className="flex flex-wrap justify-center gap-4 p-4">
             {productsByType[selectedContent as keyof ProductsByType].map(
-              (product: any) => (
+              (product: Product) => (
                 <div
                   key={product.id}
                   className="bg-white rounded-lg shadow-md p-4 w-1/5"
@@ -305,7 +361,36 @@ export default function Page() {
             )}
           </div>
         </div>
-      </>
+      </div>
+      {/* MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-martinique-500 rounded-lg p-8 border shadow-md shadow-zinc-900 ">
+            {/* Información de los productos seleccionados */}
+            <h2 className="text-2xl text-slate-900 font-bold mb-2">Resumen de compra</h2>
+            <p className="text-slate-900">
+              {selectedCard.name} <br />
+              {selectedBackground.name} <br />
+              {selectedAvatar.name}
+            </p>
+            <p className="text-slate-900 mb-4" >Precio Total: ${calculateTotal()}</p>
+
+            {/* Botón para cerrar el modal */}
+            <button
+              className="p-2 pl-4 pr-4 border mr-6 rounded-lg bg-red-700 shadow-md shadow-zinc-900 hover:bg-amber-950"
+              onClick={closeModal}
+            >
+              Cerrar
+            </button>
+            <button
+              className="p-2 pl-4 pr-4 border rounded-lg  bg-green-500 shadow-md shadow-zinc-900 hover:bg-sky-400"
+              onClick={handleBuyClick}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
