@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'down-arrow': 'url(../../public/icons/arrow-down.svg)',
+        'up-arrow': 'url(../../public/icons/arrow-up.svg)'
+      },
       fontFamily: {
         squada: "var(--squada-one)",
         display: ["var(--font-display)"],

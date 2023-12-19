@@ -1,3 +1,4 @@
+ 
 {
   "compilerOptions": {
     "target": "es5",
@@ -17,6 +18,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowImportingTsExtensions": true,
+    
     "plugins": [
       {
         "name": "next"
