@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Squada_One } from "next/font/google";
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 const squada_one = Squada_One({
   weight: "400",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className='bg-martinique-950'>
@@ -26,5 +26,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

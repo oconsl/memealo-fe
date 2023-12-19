@@ -1,9 +1,6 @@
 "use client"
 
 import { useState } from 'react'
-import ArrowUp from '../../../public/icons/arrow-up.svg'
-import ArrowDown from '../../../public/icons/arrow-down.svg'
-
 
 const properties = {
     name: "DanielLuna023",

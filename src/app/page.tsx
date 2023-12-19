@@ -1,6 +1,7 @@
+import { LandingView } from "@/sections"
 
 export default function Home() {
   return (
-    <h1>HOME</h1>
+    <LandingView/>
   )
 }
