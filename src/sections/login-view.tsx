@@ -22,7 +22,7 @@ let loginSchema = object({
     .max(20, "El nombre de usuario no puede contener mas de 20 caracteres"),
   password: string()
     .required("Contraseña es requerida")
-    .min(8, "La contraseña debe contener al menos 3 caracteres")
+    .min(8, "La contraseña debe contener al menos 8 caracteres")
     .max(20, "La contraseña no puede contener mas de 20 caracteres"),
 });
 

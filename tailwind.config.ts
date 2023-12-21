@@ -77,17 +77,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    function ({ addUtilities }: any) {
-      const newUtilities = {
-        ".text-stroke": {
-          "-webkit-text-stroke": "2px #FF7E81",
-          "text-shadow": "0px 4px 0px #93C5FD",
-        },
-      };
-
-      addUtilities(newUtilities, ["responsive", "hover"]);
-    },
-  ],
+  plugins: [ ],
 };
 export default config;
