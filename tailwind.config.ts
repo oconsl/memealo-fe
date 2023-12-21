@@ -77,5 +77,9 @@ const config: Config = {
       },
     },
   },
+<<<<<<< HEAD
+  plugins: [ ],
+=======
+>>>>>>> 9145fb54da28eefd2bf580c40774ac79f0001069
 };
 export default config;
