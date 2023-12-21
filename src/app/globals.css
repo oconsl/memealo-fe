@@ -4,18 +4,20 @@
 
 @layer utilities {
   .button-box-shadow {
-    box-shadow: inset 0px 0.1rem 0.3rem theme('colors.brown-pod.100'),
-      0px 0.12rem 0px theme('colors.martinique.950');
+    box-shadow:
+      inset 0px 0.1rem 0.3rem theme("colors.brown-pod.100"),
+      0px 0.12rem 0px theme("colors.martinique.950");
   }
 
   .button-box-shadow:active {
-    box-shadow: 0px 0.1rem 0.3rem theme('colors.brown-pod.100'),
-      inset 0px 0.12rem 0px theme('colors.martinique.950');
+    box-shadow:
+      0px 0.1rem 0.3rem theme("colors.brown-pod.100"),
+      inset 0px 0.12rem 0px theme("colors.martinique.950");
   }
 
   .stroke {
-    -webkit-text-stroke: 2px theme('colors.coral-red.400');
-    text-stroke: 2px theme('colors.coral-red.400');
+    -webkit-text-stroke: 2px theme("colors.coral-red.400");
+    text-stroke: 2px theme("colors.coral-red.400");
   }
 
   .light-stroke {
@@ -24,17 +26,17 @@
   }
 
   .stroke-btn {
-    -webkit-text-stroke: 1px theme('colors.coral-red.400');
-    text-stroke: 1px theme('colors.coral-red.400');
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
+    text-stroke: 1px theme("colors.coral-red.400");
   }
 
   .stroke-button {
-    -webkit-text-stroke: 1px theme('colors.coral-red.400');
-    text-stroke: 1px theme('colors.coral-red.400');
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
+    text-stroke: 1px theme("colors.coral-red.400");
   }
 
   .title-shadow {
-    text-shadow: 0 3px 0 theme('colors.astral.400');
+    text-shadow: 0 3px 0 theme("colors.astral.400");
   }
 
   .text-shadow {
@@ -42,7 +44,13 @@
   }
 
   .text-stroke {
+    -webkit-text-stroke: 1px theme("colors.coral-red.400");
     text-stroke: 1px theme("colors.coral-red.400");
+  }
+
+  .label-stroke {
+    -webkit-text-stroke: none;
+    text-stroke: none;
   }
 
   .title-shadow-none {
@@ -53,12 +61,16 @@
     text-shadow: none;
   }
 
-  .text-stroke:focus-within {
-    text-shadow: -2px -2px 0 theme('colors.astral.950'),
-      0 -2px 0 theme('colors.astral.950'), 2px -2px 0 theme('colors.astral.950'),
-      2px 0 0 theme('colors.astral.950'), 2px 2px 0 theme('colors.astral.950'),
-      0 2px 0 theme('colors.astral.950'), -2px 2px 0 theme('colors.astral.950'),
-      -2px 0 0 theme('colors.astral.950');
+  .label-stroke:focus-within {
+    text-shadow:
+      -2px -2px 0 theme("colors.astral.950"),
+      0 -2px 0 theme("colors.astral.950"),
+      2px -2px 0 theme("colors.astral.950"),
+      2px 0 0 theme("colors.astral.950"),
+      2px 2px 0 theme("colors.astral.950"),
+      0 2px 0 theme("colors.astral.950"),
+      -2px 2px 0 theme("colors.astral.950"),
+      -2px 0 0 theme("colors.astral.950");
   }
 
   .landing-stroke {
