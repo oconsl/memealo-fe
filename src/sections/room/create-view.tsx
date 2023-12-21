@@ -17,7 +17,7 @@ export default function CreateView() {
 
 
   return (
-    <main className="w-full bg-martinique-950 h-screen flex items-center justify-center">
+    <main className="w-full bg-martin ique-950 h-screen flex items-center justify-center">
       <div className="fixed border border-white w-1/2 p-2 flex flex-col items-center justify-center gap-2">
         <h1 className="text-red-500 text-8xl">Memealo</h1>
 
