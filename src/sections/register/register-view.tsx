@@ -3,10 +3,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Squada_One } from "next/font/google";
 import Image from "next/image";
+import styles from '../../components/styles.module.css'
 
 
 
 const Squada = Squada_One({ subsets: ["latin"], weight: "400" });
+
 
 export default function RegisterView() {
   const {
@@ -18,9 +20,9 @@ export default function RegisterView() {
     console.log(data);
   });
   return (
-    <>
+    <div className={styles.background}>
     
-      <div className="bg-martinique-950 h-[100svh] w-screen">  
+     
         <div className={Squada.className}>
           <h1 className=" text-brown-pod-logo-color text-9xl title-shadow stroke z-10">
             {" "}
@@ -40,16 +42,13 @@ export default function RegisterView() {
         
         <Image src="/SpongeBob-amazed.gif" alt='SpongeBob amazed gif' width={300} height={300} objectFit="cover">
         </Image>
-
-        <Image src="/Chris-Farley-Amazed.gif" alt='Chris Farley amazed gif' width={300} height={300} objectFit="cover">
-        </Image>
         
         
         
 
         </div>  
           <div className=" box-border px-28 rounded-xl border-4 border-solid border-martinique-border bg-martinique-inner-color shadow-2xl fixed right-0 mr-20">
-            <h2 className="text-brown-pod-logo-color text-7xl mb-28 -rotate-12 text-center mt-20  title-shadow stroke "> memealo! </h2>
+            <h2 className="text-brown-pod-logo-color text-7xl mb-28 -rotate-12 text-center mt-20  title-shadow stroke"> memealo! </h2>
             
             <form className="text-white" onSubmit={onSubmit}>
               <div className="flex flex-col justify-center items-center mb-5  ">
@@ -129,8 +128,7 @@ export default function RegisterView() {
           </div>
           </div>
         </div>
-      </div>
-      
-    </>
+    </div>
   );
 }
+

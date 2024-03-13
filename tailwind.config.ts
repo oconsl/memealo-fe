@@ -32,10 +32,16 @@ const config: Config = {
       borderRadius:{
         'twenty':'20px'
       },
+      borderWidth:{
+        'five':'5px'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      fontSize: {
+        'counter-size':'300px'
       },
 
       colors:{

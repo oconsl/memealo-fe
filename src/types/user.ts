@@ -24,5 +24,5 @@ export type Achievement = {
 export type Cosmetic = {
   id: number
   imageUrl: string
-  type: CosmeticType
+  type?: CosmeticType
 }

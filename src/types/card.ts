@@ -20,7 +20,7 @@ export type TwistCard = {
   id: number
   name: string
   description: string
-  key: string
+  key?: string
   imageUrl: string
 }
 
